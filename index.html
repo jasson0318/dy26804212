@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥師服務滿意度調查</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .emotions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .emotions img {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .emotions img:hover {
+            transform: scale(1.1);
+        }
+        img.coupon {
+            max-width: 90%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        img.coupon:hover {
+            transform: scale(1.05);
+        }
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0078d7; /* Matching blue color */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: #005a9e; /* Darker blue on hover */
+        }
+        .home-icon {
+            width: 40px;
+            height: 80px;
+            margin-right: 10px; /* Spacing between icon and text */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            img.coupon {
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Satisfaction Survey -->
+    <div class="page active" id="page1">
+        <h1>藥師服務滿意度調查</h1>
+        <div class="emotions">
+            <a href="#page2" onclick="showPage('page2')">
+                <img src="happy.png.png" alt="非常滿意">
+            </a>
+            <a href="#page2" onclick="showPage('page2')">
+                <img src="satisfied.png.png" alt="滿意">
+            </a>
+            <a href="#page2" onclick="showPage('page2')">
+                <img src="neutral.png.png" alt="普通">
+            </a>
+            <a href="#page2" onclick="showPage('page2')">
+                <img src="unsatisfied.png.png" alt="不滿意">
+            </a>
+            <a href="#page2" onclick="showPage('page2')">
+                <img src="very_unsatisfied.png.png" alt="非常不滿意">
+            </a>
+        </div>
+    </div>
+
+    <!-- Page 2: Discount Coupon -->
+    <div class="page" id="page2">
+        <h1>10元商品優惠券</h1>
+        <img src="coupon_image.jpg" alt="優惠券" class="coupon" onclick="window.print()">
+        <button onclick="showPage('page1')" class="home-button">
+            <img src="回首頁.png" alt="回首頁" class="home-icon">
+            回首頁
+        </button>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
